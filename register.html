@@ -1,84 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Create Account</title>
+    <title>Registerpage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="stylesheet" href="register.css">
 </head>
+
 <body>
 
-<div class="auth-wrapper">
+    <div class="auth-wrapper">
 
-    <div class="auth-card">
+        <div class="auth-card">
 
-        <!-- LEFT FORM -->
-        <div class="auth-left">
+            <div class="auth-left">
 
-            <h2>Sign Up</h2>
+                <h2>Sign Up</h2>
 
-            <input type="text" placeholder="Username">
-            <input type="email" placeholder="Email">
+                <div class="input-box">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" placeholder="Username">
+                </div>
 
-            <div class="input-box">
-                <input type="password" id="pass1" placeholder="Password">
-                <span onclick="toggle('pass1','eye1')">
-                    <i class="fa-regular fa-eye" id="eye1"></i>
-                </span>
+                <div class="input-box">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Email address">
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="pass1" placeholder="Password">
+                    <span onclick="toggle('pass1','eye1')">
+                        <i class="fa-regular fa-eye" id="eye1"></i>
+                    </span>
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="pass2" placeholder="Confirm Password">
+                    <span onclick="toggle('pass2','eye2')">
+                        <i class="fa-regular fa-eye" id="eye2"></i>
+                    </span>
+                </div>
+
+
+                <button class="btn-main">REGISTER</button>
+
+                <div class="or">
+                    <span></span> OR <span></span>
+                </div>
+
+                <button class="btn-google">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+                    Login with Google
+                </button>
+
+                <p class="bottom-text">
+                    Already have an account?
+                    <a href="index.html">Sign In</a>
+                </p>
             </div>
 
-            <div class="input-box">
-                <input type="password" id="pass2" placeholder="Confirm Password">
-                <span onclick="toggle('pass2','eye2')">
-                    <i class="fa-regular fa-eye" id="eye2"></i>
-                </span>
+            <div class="auth-right">
+                <img src="asset\register.jpg" alt="register">
             </div>
 
-            <button class="btn-main">SIGNUP</button>
-
-            <div class="or">
-                <span></span> OR <span></span>
-            </div>
-
-            <button class="btn-google">
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
-                Login with Google
-            </button>
-
-            <p class="bottom-text">
-                Already have an account?
-                <a href="index.html">Sign In</a>
-            </p>
-        </div>
-
-        <!-- RIGHT IMAGE -->
-        <div class="auth-right">
-            <img src="asset\register.jpg" alt="register">
         </div>
 
     </div>
 
-</div>
+    <script>
+        function toggle(id, eye) {
+            const input = document.getElementById(id);
+            const icon = document.getElementById(eye);
 
-<script>
-function toggle(id, eye){
-    const input = document.getElementById(id);
-    const icon = document.getElementById(eye);
-
-    if(input.type === "password"){
-        input.type = "text";
-        icon.classList.replace("fa-eye","fa-eye-slash");
-    }else{
-        input.type = "password";
-        icon.classList.replace("fa-eye-slash","fa-eye");
-    }
-}
-</script>
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
+    </script>
 
 </body>
+
 </html>

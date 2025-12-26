@@ -30,7 +30,6 @@ body{
     box-shadow:0 25px 60px rgba(0,0,0,0.12);
 }
 
-/* LEFT */
 .login-left{
     width:50%;
     padding:50px;
@@ -50,14 +49,26 @@ body{
     margin-bottom:18px;
 }
 
+.input-box i.fa-user,
+.input-box i.fa-envelope,
+.input-box i.fa-lock{
+    position:absolute;
+    left:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#6b7280;
+    font-size:14px;
+}
+
 .input-box input{
     width:100%;
-    padding:12px 42px 12px 14px;
+    padding:12px 42px 12px 42px; 
     border-radius:6px;
     border:1px solid #d1d5db;
     font-size:14px;
 }
 
+.input-box span,
 .toggle{
     position:absolute;
     right:14px;
@@ -66,6 +77,7 @@ body{
     cursor:pointer;
     color:#6b7280;
 }
+
 
 .forgot{
     display:block;
@@ -134,7 +146,10 @@ body{
     text-decoration:none;
 }
 
-/* RIGHT */
+.bottom-text a:hover {
+    text-decoration: underline;
+}
+
 .login-right{
     width:50%;
     background:#fff;
@@ -149,6 +164,7 @@ body{
     object-fit: cover;
 }
 
+/* responsive */
 @media (max-width: 900px){
 
     body{
