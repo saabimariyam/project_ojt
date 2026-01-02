@@ -1,3 +1,56 @@
+<?php
+include("connect.php");
+
+$alertMessage = "";
+$redirect = "";
+
+if(isset($_POST['register'])){
+
+    $username  = trim($_POST['username']);
+    $email     = trim($_POST['email']);
+    $password  = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if($username=="" || $email=="" || $password=="" || $confirm_password==""){
+        $alertMessage = "All fields are required";
+    }
+    elseif(strlen($password) < 6){
+        $alertMessage = "Password must be at least 6 characters";
+    }
+    elseif($password !== $confirm_password){
+        $alertMessage = "Passwords do not match";
+    }
+    else{
+
+        $check = mysqli_query($conn,"SELECT id FROM user WHERE email='$email'");
+
+        if(mysqli_num_rows($check) > 0){
+            $alertMessage = "This email is already registered";
+        }
+        else{
+
+            $insert = mysqli_query($conn,
+                "INSERT INTO user(username,email,password)
+                VALUES('$username','$email','$password')"
+            );
+
+            if($insert){
+                $alertMessage = "Registration successful";
+                $redirect = "index.php";
+            }else{
+                $alertMessage = "Something went wrong";
+            }
+        }
+    }
+
+    echo "<script>
+            alert('$alertMessage');
+            ".($redirect ? "window.location.href='$redirect';" : "")."
+            </script>";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,23 +71,23 @@
 
         <div class="auth-card">
 
-            <div class="auth-left">
+            <form class="auth-left" method="POST">
 
                 <h2>Sign Up</h2>
 
                 <div class="input-box">
                     <i class="fa-regular fa-user"></i>
-                    <input type="text" placeholder="Username">
+                    <input type="text" placeholder="Username" name="username">
                 </div>
 
                 <div class="input-box">
                     <i class="fa-regular fa-envelope"></i>
-                    <input type="email" placeholder="Email address">
+                    <input type="email" placeholder="Email address" name="email">
                 </div>
 
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="pass1" placeholder="Password">
+                    <input type="password" id="pass1" placeholder="Password" name="password">
                     <span onclick="toggle('pass1','eye1')">
                         <i class="fa-regular fa-eye" id="eye1"></i>
                     </span>
@@ -42,14 +95,13 @@
 
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="pass2" placeholder="Confirm Password">
+                    <input type="password" id="pass2" placeholder="Confirm Password" name="confirm_password">
                     <span onclick="toggle('pass2','eye2')">
                         <i class="fa-regular fa-eye" id="eye2"></i>
                     </span>
                 </div>
 
-
-                <button class="btn-main">REGISTER</button>
+                <button type="submit" name="register" class="btn-main">REGISTER</button>
 
                 <div class="or">
                     <span></span> OR <span></span>
@@ -62,9 +114,9 @@
 
                 <p class="bottom-text">
                     Already have an account?
-                    <a href="index.html">Sign In</a>
+                    <a href="index.php">Sign In</a>
                 </p>
-            </div>
+            </form>
 
             <div class="auth-right">
                 <img src="asset\register.jpg" alt="register">

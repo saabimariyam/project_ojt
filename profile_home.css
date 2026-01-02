@@ -1,0 +1,71 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    height:100vh;
+    background:linear-gradient(135deg,#f7f8fc,#eef1f7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.profile-box{
+    width:420px;
+    background:#fff;
+    padding:40px;
+    border-radius:14px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    background:#2563eb;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:36px;
+    font-weight:600;
+    margin:0 auto 15px;
+}
+
+.role{
+    color:#666;
+    margin-bottom:15px;
+}
+
+.about{
+    color:#444;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.actions a{
+    padding:10px 22px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:600;
+}
+
+.actions .outline{
+    background:transparent;
+    color:#2563eb;
+    border:1px solid #2563eb;
+}
+
